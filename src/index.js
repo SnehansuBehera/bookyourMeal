@@ -5,11 +5,13 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Layout from './Layout';
 import Main from './components/main';
 import Home from './components/Home';
+import About from './components/About';
 
 const route = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
+      <Route path='about' element={<About />} />
       <Route path='/main' element={<Main />} />
     </Route>
   )
