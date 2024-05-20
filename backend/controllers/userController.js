@@ -1,6 +1,7 @@
 import asyncHandler from "../middlewares/asyncHandler.js";
 import User from "../models/userModel.js";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
+import generateToken from "../utils/createToken.js";
 
 const createUser = asyncHandler(async (req, res) => {
 
@@ -17,6 +18,7 @@ const createUser = asyncHandler(async (req, res) => {
     const newUser = new User({ username, email, password: hashedPassword });
     try {
         await newUser.save();
+        generateToken(res, newUser._id)
         res.status(201).json(
             {
                 _id: newUser._id,
