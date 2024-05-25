@@ -128,4 +128,35 @@ const deleteUser = asyncHandler(async (req, res) => {
         throw new Error("User not found");
     }
 })
-export { createUser, loginUser, logoutUser, getAllUsers, getProfile, updateProfile, deleteUser };
+
+const getUser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id).select("-password");
+    if (user) {
+        res.status(201).json(user);
+    } else {
+        res.status(404);
+        throw new Error("User not found");
+    }
+})
+
+const updateUserById = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id).select("-password");
+    if (user) {
+        user.username = req.body.username || user.username;
+        user.email = req.body.email || user.email;
+        user.isAdmin = req.body.isAdmin || user.isAdmin;
+
+        const newupdatedUser = await user.save();
+        res.json({
+            _id: newupdatedUser._id,
+            username: newupdatedUser.username,
+            email: newupdatedUser.email,
+            isAdmin: newupdatedUser.isAdmin
+
+        })
+    } else {
+        res.status(404);
+        throw new Error("User not found");
+    }
+})
+export { createUser, loginUser, logoutUser, getAllUsers, getProfile, updateProfile, deleteUser, getUser, updateUserById };
