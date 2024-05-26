@@ -17,7 +17,7 @@ const Navigation = () => {
         setShowSidebar(false);
     }
     return (
-        <div className={`${showSidebar ? 'hidden' : 'flex'} hidden lg:flex bg-black text-white flex-col p-4 w-[4%] hover:w-[15%] h-[100vh] fixed`} id='navigation-container'>
+        <div className={`${showSidebar ? 'hidden' : 'flex'} hidden z-10 m-5 rounded-xl lg:flex bg-orange-500 text-white flex-col p-4 w-[4%] hover:w-[15%] fixed`} id='navigation-container'>
             <div className='flex flex-col justify-center gap-10 my-8'>
                 <Link to='/' className='flex items-center transition-transform transform hover:translate-x-2 gap-3'>
                     <AiOutlineHome className='mr-2' size={26} />
@@ -32,6 +32,20 @@ const Navigation = () => {
                     <span className='hidden nav-item-name'>CART</span>
                 </Link>
             </div>
+            <ul className='my-8 flex flex-col gap-6'>
+                <li>
+                    <Link to='/login' className='flex items-center transition-transform transform hover:translate-x-2 gap-3'>
+                        <AiOutlineLogin className='mr-2' size={26} />
+                        <span className='hidden nav-item-name'>LOGIN</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/register' className='flex items-center transition-transform transform hover:translate-x-2 gap-3'>
+                        <AiOutlineUserAdd className='mr-2' size={26} />
+                        <span className='hidden nav-item-name'>REGISTER</span>
+                    </Link>
+                </li>
+            </ul>
         </div>
     )
 }
