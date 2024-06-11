@@ -58,18 +58,14 @@ const Login = () => {
                         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className='border-2 mt-2 border-gray-600 rounded-md hover:border-orange-400 px-2 py-[0.2rem] w-full' id='email' />
                     </div>
 
+
                     <div>
                         <label htmlFor="password" className='text-gray-400 text-lg font-bold'>Password</label>
                         <br />
                         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className='border-2 mt-2 border-gray-600 rounded-md hover:border-orange-400 px-2 py-[0.2rem] w-full' id='password' />
                     </div>
-                    <div>
-                        <label htmlFor="password" className='text-gray-400 text-lg font-bold'>Password</label>
-                        <br />
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className='border-2 mt-2 border-gray-600 rounded-md hover:border-orange-400 px-2 py-[0.2rem] w-full' id='password' />
-                    </div>
-                    <button disabled={isLoading} type='submit' className='bg-orange-400 text-white font-bold py-[0.5rem] px-2 rounded-md'>{isLoading ? "Signing in..." : "Sign in"}</button>
-                    {isLoading && <Loader />}
+                    <button disabled={isLoading} type='submit' className='bg-orange-400 text-white font-bold py-[0.5rem] px-2 rounded-md'>{isLoading ? <Loader /> : "Sign in"}</button>
+
                     <div className=''>
                         <p>New Customer?{" "}
                             <Link to={!redirect ? `register?redirect${redirect}` : '/register'} className='text-orange-400'>Register</Link>

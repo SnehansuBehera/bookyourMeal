@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 const Login = () => {
     const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -38,7 +38,7 @@ const Login = () => {
         e.preventDefault();
         try {
             if (password === confirmPassword) {
-                const res = await register({ name, email, password }).unwrap();
+                const res = await register({ username, email, password }).unwrap();
                 toast.success("Registered successfully");
                 dispatch(setCredentials({ ...res }));
                 navigate(redirect);
@@ -65,7 +65,7 @@ const Login = () => {
                     <div>
                         <label htmlFor="name" className='text-gray-400 text-lg font-bold'>Name</label>
                         <br />
-                        <input type="name" value={name} onChange={(e) => setName(e.target.value)} className='border-2 mt-2 border-gray-600 rounded-md hover:border-orange-400 px-2 py-[0.2rem] w-full' id='name' />
+                        <input type="name" value={username} onChange={(e) => setUsername(e.target.value)} className='border-2 mt-2 border-gray-600 rounded-md hover:border-orange-400 px-2 py-[0.2rem] w-full' id='name' />
                     </div>
 
 
@@ -87,14 +87,14 @@ const Login = () => {
                     </div>
 
 
-                    <button disabled={isLoading} type='submit' className='bg-orange-400 text-white font-bold py-[0.5rem] px-2 rounded-md'>{isLoading ? "chipping in..." : "Sign up"}</button>
+                    <button disabled={isLoading} type='submit' className='bg-orange-400 text-white font-bold py-[0.5rem] px-2 rounded-md'>{isLoading ? <Loader /> : "Sign up"}</button>
 
 
-                    {isLoading && <Loader />}
+
 
                     <div className=''>
                         <p>Already have account?{" "}
-                            <Link to={!redirect ? `register?redirect${redirect}` : '/login'} className='text-orange-400'>Login</Link>
+                            <Link to={!redirect ? `register?redirect=${redirect}` : '/login'} className='text-orange-400'>Login</Link>
                         </p>
                     </div>
 
