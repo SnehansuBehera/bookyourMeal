@@ -6,6 +6,8 @@ import express from "express"
 import connectdb from "./config/db.js";
 import router from "./routes/userRoutes.js";
 import category from "./routes/categoryRoutes.js";
+import product from "./routes/productRoutes.js";
+
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
@@ -15,6 +17,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/users', router);
 app.use('/api/category', category);
+app.use('/api/product', product);
 
 
 app.listen(port, () => {
