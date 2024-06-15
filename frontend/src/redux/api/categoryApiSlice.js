@@ -26,7 +26,7 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
         }),
         allCategories: builder.query({
             query: () => ({
-                url: `${CATEGORY_URL}/categories`,
+                url: `${CATEGORY_URL}/all`,
             })
         })
     })

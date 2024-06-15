@@ -53,6 +53,14 @@ const removeCategory = asyncHandler(async (req, res) => {
         res.status(500).json({ error: "Internal Error" });
     }
 })
+
+const allCategory = asyncHandler(async (req, res) => {
+    try {
+        res.status(201).json(await Category.find({}));
+    } catch (error) {
+        res.status(500).json(error?.data?.message || error.message);
+    }
+})
 const getCategory = asyncHandler(async (req, res) => {
     try {
         const { categoryId } = req.params;
@@ -63,18 +71,8 @@ const getCategory = asyncHandler(async (req, res) => {
             res.status(500).send("Category not found");
         }
     } catch (error) {
-        res.status(500).json({ error: "Internal Error" });
+        res.status(500).json({ error: "Internal server Error" });
     }
 })
-const getAllCategory = asyncHandler(async (req, res) => {
-    try {
-        const all = await Category.find({});
-        res.json(all);
 
-
-    } catch (error) {
-        console.log(error);
-        return res.status(400).json(error.message);
-    }
-})
-export { createCategory, updateCategory, removeCategory, getCategory, getAllCategory };
+export { createCategory, updateCategory, removeCategory, allCategory, getCategory };
