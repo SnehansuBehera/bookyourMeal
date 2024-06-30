@@ -6,6 +6,8 @@ import { useDeleteUserMutation } from '../../redux/api/usersApiSlice';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { toast } from 'react-toastify';
+import AdminMenu from './AdminMenu';
+
 const UserLists = () => {
     const { data, refetch, isLoading, error } = useGetUsersQuery();
     const [updateUser] = useUpdateUserMutation();
@@ -47,6 +49,7 @@ const UserLists = () => {
 
     return (
         <div className='p-4'>
+            <AdminMenu />
             <h1 className='mb-4 text-2xl font-semibold'>Users</h1>
             {isLoading ? <Loader /> : (error ? (<Message variant="danger">{error?.data?.message || error.message}</Message>) : <div className='flex flex-col md:flex-row'>
                 <table className="w-full mx-auto md:w-4/5">

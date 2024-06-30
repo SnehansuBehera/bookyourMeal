@@ -3,6 +3,7 @@ import { useAllCategoriesQuery, useCreateCategoryMutation, useDeleteCategoryMuta
 import CategoryForm from '../../components/CategoryForm';
 import { toast } from 'react-toastify';
 import Modal from '../../components/Modal';
+import AdminMenu from './AdminMenu';
 
 const CategoryList = () => {
     const { data } = useAllCategoriesQuery();
@@ -66,6 +67,7 @@ const CategoryList = () => {
     return (
         <div className='flex flex-col md:flex-row ml-[10rem]'>
             <div className='md:w-3/4 p-3'>
+                <AdminMenu />
                 <div className='h-12'>CategoryList</div>
                 <CategoryForm value={name} setValue={setName} handleSubmit={handleCreateCategory} />
                 <div className="flex flex-wrap">
