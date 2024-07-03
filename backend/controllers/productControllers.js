@@ -132,4 +132,47 @@ const newProducts = asyncHandler(async (req, res) => {
     }
 })
 
-export { createProduct, updateProduct, deleteProduct, fetchAllProducts, getProduct, writeReview, topProducts, newProducts };
+const filterProducts = asyncHandler(async (req, res) => {
+    try {
+        const { checked, radio } = req.body;
+
+        let args = {};
+        if (checked.length > 0) args.category = checked;
+        if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
+
+        const products = await Product.find(args);
+        res.json(products);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+const fetchProducts = asyncHandler(async (req, res) => {
+    try {
+        const pageSize = 6;
+
+        const keyword = req.query.keyword
+            ? {
+                name: {
+                    $regex: req.query.keyword,
+                    $options: "i",
+                },
+            }
+            : {};
+
+        const count = await Product.countDocuments({ ...keyword });
+        const products = await Product.find({ ...keyword }).limit(pageSize);
+
+        res.json({
+            products,
+            page: 1,
+            pages: Math.ceil(count / pageSize),
+            hasMore: false,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+
+export { createProduct, updateProduct, deleteProduct, fetchAllProducts, getProduct, writeReview, topProducts, newProducts, filterProducts, fetchProducts };

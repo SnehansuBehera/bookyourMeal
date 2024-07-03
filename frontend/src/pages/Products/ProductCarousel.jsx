@@ -27,7 +27,7 @@ const ProductCarousel = () => {
     };
 
     return (
-        <div className="mb-4 lg:block xl:block md:block">
+        <div className=" py-3 lg:block xl:block md:block">
             {isLoading ? null : error ? (
                 <Message variant="danger">
                     {error?.data?.message || error.error}
@@ -35,7 +35,7 @@ const ProductCarousel = () => {
             ) : (
                 <Slider
                     {...settings}
-                    className="xl:w-[50rem]  lg:w-[50rem] md:w-[56rem] sm:w-[40rem] sm:block"
+                    className="xl:w-[40rem]  lg:w-[50rem] md:w-[56rem] sm:w-[40rem] sm:block"
                 >
                     {products.map(
                         ({
@@ -55,14 +55,14 @@ const ProductCarousel = () => {
                                 <img
                                     src={image}
                                     alt={name}
-                                    className="w-full rounded-lg object-cover h-[30rem]"
+                                    className="w-full rounded-lg object-cover h-[20rem]"
                                 />
 
                                 <div className="mt-4 flex justify-between">
                                     <div className="one">
                                         <h2>{name}</h2>
                                         <p> $ {price}</p> <br /> <br />
-                                        <p className="w-[25rem]">
+                                        <p className="w-[20rem]">
                                             {description.substring(0, 170)} ...
                                         </p>
                                     </div>

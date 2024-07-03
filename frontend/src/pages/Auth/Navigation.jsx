@@ -8,6 +8,7 @@ import { useLogoutMutation } from "../../redux/api/usersApiSlice"
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
+import FavoritesCount from "../Products/FavoritesCount"
 
 
 
@@ -17,6 +18,7 @@ const Navigation = () => {
     const [dropDownMenu, setDropDownMenu] = useState(false);
     const [showSidebar, setShowSidebar] = useState(false);
     const { userInfo } = useSelector(state => state.auth);
+    const { cartItems } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [logoutApiCall] = useLogoutMutation();
@@ -59,13 +61,34 @@ const Navigation = () => {
                     <AiOutlineHome className='mr-2' size={26} />
                     <span className='hidden nav-item-name'>HOME</span>
                 </Link>
-                <Link to='/order' className='flex items-center transition-transform transform hover:translate-x-2 gap-3 '>
+                <Link to='/shop' className='flex items-center transition-transform transform hover:translate-x-2 gap-3 '>
                     <AiOutlineShopping className='mr-2' size={26} />
-                    <span className='hidden nav-item-name'>ORDER</span>
+                    <span className='hidden nav-item-name'>SHOP</span>
                 </Link>
-                <Link to='/cart' className='flex items-center transition-transform transform hover:translate-x-2 gap-3'>
-                    <AiOutlineShoppingCart className='mr-2' size={26} />
-                    <span className='hidden nav-item-name'>CART</span>
+                <Link to="/cart" className="flex relative">
+                    <div className="flex items-center transition-transform transform hover:translate-x-2">
+                        <AiOutlineShoppingCart className="mt-[3rem] mr-2" size={26} />
+                        <span className="hidden nav-item-name mt-[3rem]">Cart</span>{" "}
+                    </div>
+
+                    <div className="absolute top-9">
+                        {cartItems.length > 0 && (
+                            <span>
+                                <span className="px-1 py-0 text-sm text-white bg-pink-500 rounded-full">
+                                    {cartItems.reduce((a, c) => a + c.qty, 0)}
+                                </span>
+                            </span>
+                        )}
+                    </div>
+                </Link>
+                <Link to="/favorite" className="flex relative">
+                    <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+                        <FaHeart className="mt-[3rem] mr-2" size={20} />
+                        <span className="hidden nav-item-name mt-[3rem]">
+                            Favorites
+                        </span>{" "}
+                        <FavoritesCount />
+                    </div>
                 </Link>
             </div>
 
