@@ -15,7 +15,7 @@ const ProductTabs = ({
     setComment,
     product,
 }) => {
-    const { data, isLoading } = useGetTopProductsQuery();
+    const { data, isLoading,error } = useGetTopProductsQuery();
 
     const [activeTab, setActiveTab] = useState(1);
 
@@ -97,7 +97,7 @@ const ProductTabs = ({
                                 <button
                                     type="submit"
                                     disabled={loadingProductReview}
-                                    className="bg-pink-600 text-white py-2 px-4 rounded-lg"
+                                    className="bg-orange-600 hover:bg-orange-400 text-white py-2 px-4 rounded-lg"
                                 >
                                     Submit
                                 </button>

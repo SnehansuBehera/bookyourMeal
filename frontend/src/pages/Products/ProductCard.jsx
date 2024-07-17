@@ -17,10 +17,10 @@ const ProductCard = ({ p }) => {
     };
 
     return (
-        <div className="max-w-sm relative bg-[#1A1A1A] rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-[28rem] relative bg-[#1A1A1A] rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700">
             <section className="relative">
                 <Link to={`/product/${p._id}`}>
-                    <span className="absolute bottom-3 right-3 bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
+                    <span className="absolute bottom-3 right-3 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full bg-orange-600">
                         {p?.brand}
                     </span>
                     <img
@@ -37,7 +37,7 @@ const ProductCard = ({ p }) => {
                 <div className="flex justify-between">
                     <h5 className="mb-2 text-xl text-whiet dark:text-white">{p?.name}</h5>
 
-                    <p className=" font-semibold text-pink-500">
+                    <p className=" font-semibold text-orange-500">
                         {p?.price?.toLocaleString("en-US", {
                             style: "currency",
                             currency: "USD",
@@ -45,14 +45,14 @@ const ProductCard = ({ p }) => {
                     </p>
                 </div>
 
-                <p className="mb-3 font-normal text-[#CFCFCF]">
+                <p className="mb-3 font-normal text-[#CFCFCF] text-sm">
                     {p?.description?.substring(0, 60)} ...
                 </p>
 
                 <section className="flex justify-between items-center">
                     <Link
                         to={`/product/${p._id}`}
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-800 rounded-lg hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
                     >
                         Read More
                         <svg
@@ -76,7 +76,7 @@ const ProductCard = ({ p }) => {
                         className="p-2 rounded-full"
                         onClick={() => addToCartHandler(p, 1)}
                     >
-                        <AiOutlineShoppingCart size={25} />
+                        <AiOutlineShoppingCart size={25} className="text-white" />
                     </button>
                 </section>
             </div>

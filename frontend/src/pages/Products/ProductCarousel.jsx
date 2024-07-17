@@ -35,7 +35,7 @@ const ProductCarousel = () => {
             ) : (
                 <Slider
                     {...settings}
-                    className="xl:w-[40rem]  lg:w-[50rem] md:w-[56rem] sm:w-[40rem] sm:block"
+                    className="xl:w-[35rem]  lg:w-[50rem] md:w-[56rem] sm:w-[40rem] sm:block"
                 >
                     {products.map(
                         ({
@@ -58,42 +58,52 @@ const ProductCarousel = () => {
                                     className="w-full rounded-lg object-cover h-[20rem]"
                                 />
 
-                                <div className="mt-4 flex justify-between">
-                                    <div className="one">
-                                        <h2>{name}</h2>
-                                        <p> $ {price}</p> <br /> <br />
-                                        <p className="w-[20rem]">
-                                            {description.substring(0, 170)} ...
+                                <div className="mt-4 flex justify-between gap-4">
+                                    <div className="one flex flex-col gap-4">
+                                        <div className="flex justify-start gap-3">
+                                            <h2 className="font-bold">{name}</h2>
+                                            <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-orange-600 dark:text-white">
+                                                ${price}
+                                            </span>
+                                        </div>
+                                        <p className="w-[15rem] text-sm text-gray-600 leading-5">
+                                            {description.substring(0, 100)} ...
                                         </p>
                                     </div>
 
                                     <div className="flex justify-between w-[20rem]">
-                                        <div className="one">
-                                            <h1 className="flex items-center mb-6">
-                                                <FaStore className="mr-2 text-black" /> Brand: {brand}
+                                        <div className="one flex flex-col gap-2 justify-start items-start">
+                                            <h1 className="flex items-center">
+                                                <FaStore className="mr-2 text-black text-sm" />
+                                                <p className="font-medium text-sm">Brand: <span className="text-gray-500">{brand}</span></p>
                                             </h1>
-                                            <h1 className="flex items-center mb-6">
-                                                <FaClock className="mr-2 text-black" /> Added:{" "}
-                                                {moment(createdAt).fromNow()}
+                                            <h1 className="flex items-center">
+                                                <FaClock className="mr-2 text-black text-sm" />
+
+                                                <p className="font-medium text-sm">Added: <span className="text-gray-500">{moment(createdAt).fromNow()}</span></p>
                                             </h1>
-                                            <h1 className="flex items-center mb-6">
-                                                <FaStar className="mr-2 text-black" /> Reviews:{" "}
-                                                {numReviews}
+                                            <h1 className="flex items-center">
+                                                <FaStar className="mr-2 text-black text-sm" />
+
+                                                <p className="font-medium text-sm">Reviews: <span className="text-gray-500">{numReviews}</span></p>
                                             </h1>
                                         </div>
 
-                                        <div className="two">
-                                            <h1 className="flex items-center mb-6">
-                                                <FaStar className="mr-2 text-black" /> Ratings:{" "}
-                                                {Math.round(rating)}
+                                        <div className="two flex flex-col gap-2 justify-start items-start">
+                                            <h1 className="flex items-center">
+                                                <FaStar className="mr-2 text-black text-sm" />
+
+                                                <p className="font-medium text-sm">Ratings: <span className="text-gray-500">{Math.round(rating)}</span></p>
                                             </h1>
-                                            <h1 className="flex items-center mb-6">
-                                                <FaShoppingCart className="mr-2 text-black" /> Quantity:{" "}
-                                                {quantity}
+                                            <h1 className="flex items-center">
+                                                <FaShoppingCart className="mr-2 text-black text-sm" />
+
+                                                <p className="font-medium text-sm">Quantity: <span className="text-gray-500">{quantity}</span></p>
                                             </h1>
-                                            <h1 className="flex items-center mb-6">
-                                                <FaBox className="mr-2 text-black" /> In Stock:{" "}
-                                                {countInStock}
+                                            <h1 className="flex items-center">
+                                                <FaBox className="mr-2 text-black text-sm" />
+
+                                                <p className="font-medium text-sm">In Stock: <span className="text-gray-500">{countInStock}</span></p>
                                             </h1>
                                         </div>
                                     </div>
