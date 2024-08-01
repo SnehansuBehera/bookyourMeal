@@ -1,0 +1,8 @@
+[build]
+  publish = "frontend/dist"
+  command = "npm run build --prefix frontend"
+
+[dev]
+  command = "npm start --prefix frontend"
+  port = 5000
+  targetPort = 5173
