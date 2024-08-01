@@ -1,9 +1,9 @@
 [build]
-  base = "frontend"
-  publish = "frontend/dist"
+  base = "" # Set to root if it's not needed
+  publish = "frontend/dist" # Correct publish directory
   command = "npm run build --prefix frontend"
 
 [dev]
   command = "npm start --prefix frontend"
-  port = 3000
+  port = 5000
   targetPort = 5173
