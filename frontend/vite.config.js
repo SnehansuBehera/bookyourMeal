@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api/": "https://bookmymeals.netlify.app",
-      "/uploads/": "https://bookmymeals.netlify.app"
+      "/api/": "http://localhost:5000",
+      "/uploads/": "http://localhost:5000"
     }
   },
   build: {
